@@ -21,13 +21,28 @@ Examples
 
 function blackJack(array){
 	var sum = 0;
+	var counter = 0
+
+	array.forEach(function(element){
+		if(element === 'A'){
+			counter++
+		}
+	})
+
+
 	for(var i = 0; i < array.length; i++){
 
 		if (array[i] === 'J' || array[i] === 'Q' || array[i] === 'K'){
 			array[i] = 10
 		}
-		if(array[i] === 'A'){
-			array[i] = 11
+		if(counter > 1){
+			if(array[i] === 'A'){
+				array[i] = 1
+			}
+		} else {
+			if(array[i] === 'A'){
+				array[i] = 11
+			}
 		}
 
 		array[i] = parseInt(array[i])
@@ -35,9 +50,8 @@ function blackJack(array){
 		if (array[i] <= 21 ){
 			sum+= array[i]
 			if (sum > 21){
-				break
+				break;
 			}
-			console.log(sum)
 		}
 
 	}
