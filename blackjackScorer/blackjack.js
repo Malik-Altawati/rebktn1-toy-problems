@@ -13,3 +13,33 @@ Examples
 ["A", "10", "A"]                ==>  12
 ["5", "3", "7"]                 ==>  15
 ["5", "4", "3", "2", "A", "K"]  ==>  25 */
+//
+// 
+// Jack, Queen and King count as 10
+// A = 11 or 1
+// 
+
+function blackJack(array){
+	var sum = 0;
+	for(var i = 0; i < array.length; i++){
+
+		if (array[i] === 'J' || array[i] === 'Q' || array[i] === 'K'){
+			array[i] = 10
+		}
+		if(array[i] === 'A'){
+			array[i] = 11
+		}
+
+		array[i] = parseInt(array[i])
+
+		if (array[i] <= 21 ){
+			sum+= array[i]
+			if (sum > 21){
+				break
+			}
+			console.log(sum)
+		}
+
+	}
+	return sum
+}
