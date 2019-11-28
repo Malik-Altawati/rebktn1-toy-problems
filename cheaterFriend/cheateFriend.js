@@ -1,5 +1,5 @@
 
-//     A friend of mine takes a sequence of numbers from 1 to n (where n > 0).
+//     A friend of mine takes a sequence of numbers from 1 to n (where n > 0)./
 //     Within that sequence, he chooses two numbers, a and b.
 //     He says that the product of a and b should be equal to the sum of all numbers in the sequence, excluding a and b.
 //     Given a number n, could you tell me the numbers he excluded from the sequence?
@@ -17,3 +17,25 @@
 //
 // Example:
 // removNb(26) should return [ {15, 21}, {21, 15} ]
+
+function check(n){
+	if (n < 0){
+		return 'n cant be less than 0'
+	}
+	
+	var sum = 0;
+	for ( var i = 0; i < n; i++ ){
+			sum += i
+	}
+	var result = {};
+	for(var i = 1 ; i < n; i++){
+
+		for(var j= 1; j < n; j++){
+			if ((i * j) === sum){
+				result[i] = j ;
+			}
+		}
+	}
+
+return result;
+}
