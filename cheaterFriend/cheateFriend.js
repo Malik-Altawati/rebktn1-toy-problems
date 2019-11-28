@@ -22,20 +22,22 @@ function check(n){
 	if (n < 0){
 		return 'n cant be less than 0'
 	}
+	var arr = []
 	
 	var sum = 0;
-	for ( var i = 0; i < n; i++ ){
+	for ( var i = 0; i <= n; i++ ){
 			sum += i
 	}
 	var result = {};
 	for(var i = 1 ; i < n; i++){
 
 		for(var j= 1; j < n; j++){
-			if ((i * j) === sum){
-				result[i] = j ;
+			if ((i * j)+i+j === sum){
+				//result[i] = j
+				arr.push([i , j])
 			}
 		}
 	}
 
-return result;
+return arr;
 }
