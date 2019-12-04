@@ -21,3 +21,39 @@
 // The second one will decode a string with a factorial representation and produce the decimal representation : factString2Dec(str).
 
 // Given numbers will be positive.
+
+
+
+
+// function factorial(num){
+// 	var result = 1;
+// 	for(var i = num; i > 0; i--){
+// 		result *= i
+
+// 	}
+// 	return result
+// }
+
+
+
+//////////////////////////////////////////////////
+// I didnt understand the question so I did this 
+
+  function factString2Dec(str){
+  	str = str.split("")
+  	var result = []
+  	for(var i = 0; i <str.length;i++){
+  		var temp = str[i].charCodeAt()
+  		result.push(temp)
+  	}
+  	return result
+  }
+  
+  function dec2FactString(nb){
+  	var result = ""
+  	for(var i = 0; i < nb.length;i++){
+  		temp = String.fromCharCode(nb[i])
+  		result += temp
+  	}
+  	return result
+  }
