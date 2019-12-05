@@ -35,29 +35,22 @@ characterFrequency("") -->  [ ]
 //
 
  function characterFrequency(string){
- 	var temp = []
- 	var counter = 0
- 	string = string.split("")
- 	for(var i = 0; i < string.length;i++){
- 		for(var j = 0; j < string.length;j++){
- 			if(string[i] === string[j] ){
- 				counter++
- 			}
- 		}
- 		temp.push([string[i],counter])
- 		counter = 0
- 	}
+	var obj ={};
+	var arr = []
+	for (var i = 0; i < string.length; i++) {
 
- 	var obj = {}
- 	for(var i = 0; i < temp.length; i++){
- 		obj[temp[i][0]] = temp[i][1]
- 	}
+		if (!obj[string[i]]) {
+			obj[string[i]] = 0
+		}
 
- 	var final = []
- 	for(var key in obj){
- 		final.push([key,obj[key]])
- 	}
+		obj[string[i]]++
+	}
 
+	for(var key in obj){
+		arr.push([key, obj[key]])
+	}
+  
+  // if we change the index to zero, we can order based on the characters
 
- 	return final.sort();
+	return arr.sort(function(a, b) {return a[1] - b[1];})
 }
