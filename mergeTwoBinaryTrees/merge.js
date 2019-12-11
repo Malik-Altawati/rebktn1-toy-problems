@@ -36,4 +36,27 @@ Note: The merging process must start from the root nodes of both trees.
  * @param {TreeNode} t2
  * @return {TreeNode}
  */
-var mergeTrees = function(t1, t2) {};
+
+
+
+
+	function TreeNode(val) {
+	  this.val = val;
+	  this.left = this.right = null;
+	}
+
+  var t3 = {
+	val: null,
+	left : null,
+    right : null
+	}
+
+	var mergeTrees = function(t1, t2) {
+
+		t3.val = t1.val + t2.val
+
+			t3.left = TreeNode(t1.left+t2.left)
+			t3.right = TreeNode(t1.right+t2.right)
+
+		return t3;
+	};
