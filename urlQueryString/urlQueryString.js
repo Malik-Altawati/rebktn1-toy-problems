@@ -9,4 +9,18 @@ parseQueryString("http://example.com?msg=hello%20world") // [ [ "msg", "hello wo
 parseQueryString("http://example.com") // undefined
 */
 
-function parseQueryString(url) {}
+function parseQueryString(url) {
+	url = url.split("?")
+	var newUrl = url[1].split("&") 
+
+	var newArray = []
+
+	for(var i = 0; i < newUrl.length;i++){
+
+		newArray.push(newUrl[i].split("="))
+		newArray[i][1]= decodeURIComponent(newArray[i][1])
+	}
+
+
+	return newArray
+}
