@@ -26,17 +26,15 @@ function largestProductOfThree(array) {
 
 	}else{
 				
-			for(var i = 0; i < array.length; i++){
-				
-				if( Math.abs(array[i]) > max){
-					temp= array[i]
-				}
-			}
-
-			if(temp){
-				result = array[0] * array[1] * array[array.length-1]
+				if((array[0] * array[1] * array[array.length-1])>
+					array[array.length-1] * array[array.length-2] * array[array.length-3]
+					){
+					result = array[0] * array[1] * array[array.length-1]
+				}else{
+					result = array[array.length-1] * array[array.length-2] * array[array.length-3]
 				}
 
 			}
 	return result
 }
+
