@@ -4,7 +4,36 @@ Write a function that accepts an array of integers and returns the largest produ
 
 largestProductOfThree([ 2, 1, 3, 7 ]) // 42
 largestProductOfThree([ 0, 2, 3 ]) //	0
-largestProductOfThree([1, 4, -5, -2]) // 40
+largestProductOfThree([1, 4, -5, -2]) // 40  [-5,-2,1,4] -> [-5, -2, 4]
 */
 
-function largestProductOfThree(array) {}
+function largestProductOfThree(array) {
+
+	array = array.sort(function(a,b){return a - b})
+	var max = Math.max.apply(Math,array)
+	
+
+	var result;
+	var temp ;
+
+	var test = array;
+	
+    var checker = test.some(v => v < 0);
+
+	if (checker === false) {
+
+		result = array[array.length-1] * array[array.length-2] * array[array.length-3]
+
+	}else{
+				
+				if((array[0] * array[1] * array[array.length-1])>
+					array[array.length-1] * array[array.length-2] * array[array.length-3]
+					){
+					result = array[0] * array[1] * array[array.length-1]
+				}else{
+					result = array[array.length-1] * array[array.length-2] * array[array.length-3]
+				}
+
+			}
+	return result
+}
