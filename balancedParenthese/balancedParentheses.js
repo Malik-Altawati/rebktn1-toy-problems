@@ -15,6 +15,12 @@ var isBalanced = function(str) {
 		if (str[i] === "("){ opening++ }
 		if (str[i] === ")"){ closing++ }
 	}
-
 	return opening === closing
 };
+
+// with using regExp
+
+var isBalanced = function(str) {
+	return str.match(/\(/g).length === str.match(/\)/g).length 
+}
+
