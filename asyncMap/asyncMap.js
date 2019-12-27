@@ -38,20 +38,17 @@
 
 var asyncMap = function(tasks, cb) {
 	var array = []
-	
-		var x = tasks.Map(task =>
+	var count = 0
+	tasks.forEach(function(task,i){
+		task((result)=>{
 
-		 return new Promise((resolve, reject) => {
-        task();
-        resolve(cb(task()));
-    	})
-	    .then(result => {
-	        array.push(result)
-	    });
-			//
-		console.log(array)
-		//console.log(array)
-		//return callback("result: ",array)
+		array[i] = result
+		count++
+		if(count === tasks.length){
+			cb(array)
+		}
+	})
+	})
 };
 
 
