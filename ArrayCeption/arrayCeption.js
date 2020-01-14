@@ -15,3 +15,27 @@
 //  [ ] ==>	0
 //  array:
 //  [ [ [ ] ] ] ==>	0
+
+
+
+
+function Arrayception(array) {
+    var deep = 0
+    var max = 0
+    function check(array, deep) {
+        array.forEach(function (item) {
+            if (Array.isArray(item) && item.length > 0) {
+                check(item, deep++)
+            } else {
+                result++
+            }
+
+            if (deep > max) {
+                max = deep
+            }
+        })
+    }
+    check(array, deep)
+
+    return max
+}
