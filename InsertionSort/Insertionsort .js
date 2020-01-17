@@ -25,4 +25,14 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var insertionSortList = function(head) {};
+var insertionSortList = function (head) {
+    var result = []
+    function looper(head) {
+        result.push(head.val)
+        if (head.next) {
+            looper(head.next)
+        }
+    }
+    looper(head)
+    return result.sort()
+};
