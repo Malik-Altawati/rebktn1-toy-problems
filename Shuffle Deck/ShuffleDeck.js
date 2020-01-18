@@ -25,14 +25,28 @@
 
 // You've got Helpers!
 
-// var orderedDeck = function() {
-//   var suits = [ '♥', '♣', '♠', '♦' ];
-//   var values = [ 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K' ];
-//   var deck = [];
-//   suits.forEach(function(suit) {
-//     values.forEach(function(value) {
-//       deck.push(value + suit);
-//     });
-//   });
-//   return deck;
-// };
+var orderedDeck = function () {
+    var suits = ['♥', '♣', '♠', '♦'];
+    var values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+    var deck = [];
+    suits.forEach(function (suit) {
+        values.forEach(function (value) {
+            deck.push(value + suit);
+        });
+    });
+    return deck;
+};
+
+
+
+
+function shuffleDeck() {
+    var array = orderedDeck()
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array
+}
