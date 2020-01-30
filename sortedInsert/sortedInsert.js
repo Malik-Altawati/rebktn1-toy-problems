@@ -17,7 +17,7 @@ The stack implementation is available to view below.
 
 // the stack class is exposed here for reference, you may or may not utilize additional stacks in your algorithm.
 
-var Stack = function(initialValue) {
+var Stack = function (initialValue) {
   this.store = {};
   this.count = 0;
 
@@ -26,19 +26,19 @@ var Stack = function(initialValue) {
   }
 };
 
-Stack.prototype.isEmpty = function() {
+Stack.prototype.isEmpty = function () {
   return !this.count;
 };
 
-Stack.prototype.peek = function() {
+Stack.prototype.peek = function () {
   return this.store[this.count];
 };
 
-Stack.prototype.push = function(val) {
+Stack.prototype.push = function (val) {
   this.store[++this.count] = val;
 };
 
-Stack.prototype.pop = function() {
+Stack.prototype.pop = function () {
   if (!this.isEmpty()) {
     var tmp = this.store[this.count];
     delete this.store[this.count--];
@@ -48,4 +48,23 @@ Stack.prototype.pop = function() {
 
 function sortedInsert(stack, element) {
   // your code here...
+  //{1: 5, 2: 7, 3: 19, 4: 3} 
+  var newStack = {}
+  var i = 1
+  for (var key in stack) {
+    if (stack[key] < element) {
+      newStack[i] = stack[key]
+      i++
+    }
+  }
+  newStack[i] = element
+  var j = i + 1
+  for (var key in stack) {
+    if (stack[key] > element) {
+      newStack[j] = stack[key]
+      j++
+    }
+  }
+
+  return newStack
 }
