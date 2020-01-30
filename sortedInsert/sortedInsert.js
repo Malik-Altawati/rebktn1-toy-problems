@@ -46,25 +46,35 @@ Stack.prototype.pop = function () {
   }
 };
 
-function sortedInsert(stack, element) {
-  // your code here...
-  //{1: 5, 2: 7, 3: 19, 4: 3} 
-  var newStack = {}
-  var i = 1
-  for (var key in stack) {
-    if (stack[key] < element) {
-      newStack[i] = stack[key]
-      i++
-    }
-  }
-  newStack[i] = element
-  var j = i + 1
-  for (var key in stack) {
-    if (stack[key] > element) {
-      newStack[j] = stack[key]
-      j++
-    }
-  }
+// function sortedInsert(stack, element) {
+//   // your code here...
+//   //{1: 5, 2: 7, 3: 19, 4: 3}   
+//   var newStack = {}
+//   var i = 1
+//   for (var key in stack) {
+//     if (stack[key] < element) {
+//       newStack[i] = stack[key]
+//       i++
+//     }
+//   }
+//   newStack[i] = element
+//   var j = i + 1
+//   for (var key in stack) {
+//     if (stack[key] > element) {
+//       newStack[j] = stack[key]
+//       j++
+//     }
+//   }
 
-  return newStack
+//   return newStack
+// }
+
+function sortedInsert(stack, element) {
+  var x = Object.values(stack)
+  x.push(element)
+  x.sort()
+  for (var i = 1; i < x.length; i++) {
+    stack[i] = x[i]
+  }
+  return stack
 }
