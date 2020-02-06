@@ -11,5 +11,23 @@ toMilitary("04:00") // "04:00"
 */
 
 function toMilitary(time) {
-  // your code here...
+  var result = ""
+  if (time[time.length - 1] != "m") return time;
+
+  time = time.split(":")
+  var hour = JSON.parse(time[0])
+  var period = time[1].slice(2, 4)
+
+  if (period == "pm") {
+    result += hour + 12
+  } else if (period == "am") {
+    if (JSON.stringify(hour).length <= 1) {
+      result += '0' + hour
+    } else {
+      result += hour
+    }
+  }
+
+  if (result === "12:00") return "00:00";
+  return result + ":" + time[1].slice(0, 2)
 }
