@@ -24,11 +24,9 @@ function volume(array) {
   for (var i = 1; i < array.length; i++) {
     if (array[i] < array[i - 1] && array[i] < array[i + 1]) {
       if (array[i + 1] > array[i - 1]) {
-        var test = array[i + 1] - array[i - 1]
-        check.push(array[i + 1] - test)
+        check.push(array[i - 1])
       } else {
-        var test = array[i - 1] - array[i + 1]
-        check.push(array[i - 1] - test)
+        check.push(array[i + 1])
       }
     }
   }
