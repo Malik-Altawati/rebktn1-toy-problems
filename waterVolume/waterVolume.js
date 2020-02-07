@@ -18,6 +18,21 @@ volume([1,2,3,2,1]) // 0
 
 */
 
-function volume(heights) {
+function volume(array) {
   // your code here...
+  var check = []
+  for (var i = 1; i < array.length; i++) {
+    if (array[i] < array[i - 1] && array[i] < array[i + 1]) {
+      if (array[i + 1] > array[i - 1]) {
+        var test = array[i + 1] - array[i - 1]
+        check.push(array[i + 1] - test)
+      } else {
+        var test = array[i - 1] - array[i + 1]
+        check.push(array[i - 1] - test)
+      }
+    }
+  }
+
+  if (check.length === 0) return 0;
+  return Math.max(check)
 }
