@@ -66,10 +66,48 @@ Mergesort is an optimized sorting algorithm which is a common choice to implemen
 (For example, Firefox's Array.sort method uses a tuned mergesort; the WebKit engine used by Chrome and Safari uses quicksort for numeric arrays, and mergesort for arrays of strings.)
 */
 
-Array.prototype.sort = function() {
+Array.prototype.sort = function () {
   console.log("please don't use the native sort function!");
 };
 
 function mergeSort(arr) {
   // your code here...
+  var newArray = []
+  var newArray2 = []
+  var last = []
+  for (var i = 0; i < arr.length; i++) {
+    arr[i] = [arr[i]]
+  }
+
+  var change = 0;
+  if (arr.length % 2 === 1) {
+    change = -1
+  }
+  for (var i = 0; i < arr.length + change; i++) {
+    if (arr[i][0] < arr[i + 1][0]) {
+      newArray.push([arr[i][0], arr[i + 1][0]])
+    } else {
+      newArray.push([arr[i + 1][0], arr[i][0]])
+    }
+    i++
+  }
+
+  for (var i = 0; i < newArray.length - 1; i++) {
+    if (newArray[i][0] < newArray[i + 1][0]) {
+      newArray2.push([newArray[i][0], newArray[i][1], newArray[i + 1][0], newArray[i + 1][1]])
+    } else {
+      newArray2.push([newArray[i + 1][0], newArray[i + 1][1], newArray[i][0], newArray[i][1]])
+    }
+    i++
+  }
+
+  for (var i = 0; i < newArray2.length; i++) {
+    if (newArray2[i][0] < newArray2[i + 1][0]) {
+      last.push(newArray2[i][0], newArray2[i][1], newArray2[i][2], newArray2[i][3], newArray2[i + 1][0], newArray2[i + 1][1], newArray2[i + 1][2], newArray2[i + 1][3])
+    } else {
+      last.push(newArray2[i + 1][0], newArray2[i + 1][1], newArray2[i + 1][2], newArray2[i + 1][3], newArray2[i][0], newArray2[i][1], newArray2[i][2], newArray2[i][3])
+    }
+    i++
+  }
+  return last
 }
