@@ -34,4 +34,14 @@ This usually matches the way arrays are addressed in code, but keep in mind that
 
 function rotateMatrix(matrix) {
   // your code here...
+  var result = []
+  var temp = []
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = matrix.length - 1; j >= 0; j--) {
+      temp.push(matrix[j][i])
+    }
+    result.push(temp)
+    temp = []
+  }
+  return result
 }
