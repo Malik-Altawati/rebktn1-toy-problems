@@ -1,3 +1,4 @@
+
 /**
  * Build a class to represent a range of numbers that takes:
  *   - a beginning index,
@@ -39,17 +40,52 @@
  */
 
 
-var Range = function(start, end, step) {
+var Range = function(start, end, step = 1) {
+		this.start = start;
+		this.end = end;
+		this.step = step;
+		this.size = 0
+		//this.array = []
+		this.string ="";
+	
+	if (this.start === undefined) return;
+	if( this.end === undefined) return this.start;
+	
+
+	if( this.start >  this.end){
+		while ( this.start >= this.end){
+		//this.array.push(this.start)
+		this.string+=this.start
+		this.size = this.size + 1
+		this.start-=step
+		}
+	}else{
+		while ( this.start <= this.end){
+		//this.array.push(this.start)
+		this.string+=this.start
+		this.size = this.size + 1
+		this.start+=step
+		}
+	}
+
+
 };
+
 
 Range.prototype.size = function () {
+	return this.size;
 };
 
+
 Range.prototype.each = function (callback) {
+	for(var i = 0; i < this.string.length; i++){
+		callback(this.string[i])
+	}
 };
 
 Range.prototype.includes = function (val) {
+	return this.array.includes(val)
 };
 
-var range = new Range(1);
+//var range = new Range(1);
 

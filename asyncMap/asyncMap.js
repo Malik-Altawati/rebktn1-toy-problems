@@ -1,3 +1,4 @@
+
 'use strict';
 
 /* Implement the function asyncMap:
@@ -16,27 +17,40 @@
  *
  * Example:
  *
- * asyncMap([
- *  function(cb){
- *    setTimeout(function(){
- *      cb('one');
- *    }, 200);
- *  },
- *  function(cb){
- *    setTimeout(function(){
- *      cb('two');
- *    }, 100);
- *  }
- * ],
- *  function(results){
- *    // the results array will equal ['one','two'] even though
- *    // the second function had a shorter timeout.
- *    console.log(results); // ['one', 'two']
- * });
+ asyncMap([
+  function(cb){
+    setTimeout(function(){
+      cb('one');
+    }, 200);
+  },
+  function(cb){
+    setTimeout(function(){
+      cb('two');
+    }, 100);
+  }
+ ],
+  function(results){
+    console.log(results); 
+ });
  *
  *
  */
 
 
-var asyncMap = function(tasks, callback) {
+var asyncMap = function(tasks, cb) {
+	var array = []
+	var count = 0
+	tasks.forEach(function(task,i){
+		task((result)=>{
+
+		array[i] = result
+		count++
+		if(count === tasks.length){
+			cb(array)
+		}
+	})
+	})
 };
+
+
+

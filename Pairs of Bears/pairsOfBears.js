@@ -1,3 +1,4 @@
+
 /*
 
 In order to prove it's success and gain funding, the wilderness zoo needs to prove to environmentalists that it has x number of mating pairs of bears.
@@ -20,3 +21,31 @@ x will always be a positive integer, and s will never be empty
 
 
 */
+function pairsOfBears(n,string){
+	var bears =""
+	var check;
+	var output;	
+	var result = false
+
+	string = string.split("")
+
+	
+	if(n < 0 || string === undefined){
+		return "";
+	}
+	
+	for(var i = 0; i < string.length;i++){
+		if(string[i] === "B" && string[i+1] === "8" || string[i] === "8" && string[i+1] === "B"){
+			bears+= string[i]+string[i+1]
+			string[i] = "0"
+			string[i+1] = "0"
+		}
+	}
+
+	check = bears.length/2
+	if(n === check){
+		result = true
+	}
+	output = [bears, result]
+	return output
+}
