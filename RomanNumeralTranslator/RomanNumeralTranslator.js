@@ -14,17 +14,27 @@
 
 // You've got Helpers!
 
-// var DIGIT_VALUES = {
-//     I: 1,
-//     V: 5,
-//     X: 10,
-//     L: 50, 
-//     C: 100,
-//     D: 500,
-//     M: 1000
-//   };
+var DIGIT_VALUES = {
+  I: 1,
+  V: 5,
+  X: 10,
+  L: 50,
+  C: 100,
+  D: 500,
+  M: 1000
+};
 
-function translateRomanNumeral (romanNumeral) {
-    // Write your code here, and
-    // return your final answer.
+function translateRomanNumeral(romanNumeral) {
+  var tempArray = []
+  var sum = 0
+  if (typeof (romanNumeral) != 'string') return null;
+  for (var i = 0; i < romanNumeral.length; i++) tempArray.push(DIGIT_VALUES[romanNumeral[i]]);
+  if (tempArray[0] < tempArray[1]) {
+    sum = tempArray[1] - tempArray[0]
+  } else {
+    tempArray.forEach(element => {
+      sum += element
+    });
   }
+  return sum
+}
